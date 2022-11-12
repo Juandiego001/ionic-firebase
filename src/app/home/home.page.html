@@ -12,9 +12,27 @@
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
+  
+    <ion-card>
+      <ion-card-title>Create Student</ion-card-title>
+      <ion-card-content>
+        <ion-input type="text" [(ngModel)]="studentName" placeholder="Nombre"> </ion-input>
+        <ion-input type="text" [(ngModel)]="studentAge" placeholder="Edad"> </ion-input>
+        <ion-input type="text" [(ngModel)]="studentAddress" placeholder="Dirección"> </ion-input>
+        <ion-button (click)="createRecord()" expand="full" color="success">Guardar</ion-button>
+      </ion-card-content>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    </ion-card>
+
+    <ion-card *ngFor="let item of students">
+      <ion-card-title>Student</ion-card-title>
+      <ion-card-content>
+        <ion-input id="{{ item.id }}Name" type="text" placeholder="Nombre" value="{{ item.Name }}"> </ion-input>
+        <ion-input id="{{ item.id }}Age" placeholder="Edad" value="{{ item.Age }}"> </ion-input>
+        <ion-input id="{{ item.id }}Address" placeholder="Dirección" value="{{ item.Address }}"> </ion-input>
+      </ion-card-content>
+      <ion-button (click)="updateRecord(item.id)" color="success">Actualizar</ion-button>
+      <ion-button (click)="removeRecord(item.id)">Eliminar</ion-button>
+    </ion-card>
+    
 </ion-content>
